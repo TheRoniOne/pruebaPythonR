@@ -11,4 +11,4 @@ Ejemplo:
 Rscript prueba.R "D:/Datos de Usuario/rgamezv/Downloads/prueba" "telecom.json" "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
 
 Para ejecutar el script de Python, ejecutar el comando:
-python prueba.py "D:/Datos de Usuario/rgamezv/Downloads/prueba" "telecom.json" "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
+python prueba.py "D:/Datos de Usuario/rgamezv/Downloads/prueba" "miRequest.json" "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"

@@ -31,8 +31,8 @@ resultado <- slice(dataOriginal, 1)
 # path_loc <- "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
 path_loc <- args[3]
 setwd(path_loc)
-nombreArchivoFinal <- str_glue("resultado.csv")
-write_excel_csv(resultado, nombreArchivoFinal)
+nombreArchivoFinal <- str_glue("resultado.json")
+write_json(resultado, nombreArchivoFinal)
 # tiempoFin <- Sys.time()
 # 
 # print(tiempoFin - tiempoInicio)
