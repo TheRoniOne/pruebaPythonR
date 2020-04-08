@@ -1,14 +1,14 @@
-# tiempoInicio <- Sys.time()
-# prepararAmbiente <- function(){
-#   if (!is.element("tidyverse", installed.packages())){
-#     print("Yes")
-#   }
-#   if (!is.element("readxl", installed.packages())){
-#     print("Yes")
-#   }
-# }
-# 
-# prepararAmbiente()
+tiempoInicio <- Sys.time()
+prepararAmbiente <- function(){
+  if (!is.element("tidyverse", installed.packages())){
+    print("Yes")
+  }
+  if (!is.element("readxl", installed.packages())){
+    print("Yes")
+  }
+}
+
+prepararAmbiente()
 
 library("tidyverse")
 library("readxl")
