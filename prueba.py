@@ -1,14 +1,10 @@
 import sys, subprocess
 
-locCSV = sys.argv[1]
-nombreCSV = sys.argv[2]
+locJSON = sys.argv[1]
+nombreJSON = sys.argv[2]
 locResultado = sys.argv[3]
 
-locCSV = "D:/Datos de Usuario/rgamezv/Downloads/prueba"
-nombreCSV = "telecom.csv"
-locResultado = "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
-
-comandoR = 'Rscript "D:/Datos de Usuario/rgamezv/Downloads/prueba/prueba.R" "{}" "{}" "{}"'.format(locCSV, nombreCSV, locResultado)
+comandoR = 'Rscript "D:/Datos de Usuario/rgamezv/Downloads/prueba/prueba.R" "{}" "{}" "{}"'.format(locJSON, nombreJSON, locResultado)
 
 def main():
     print(comandoR)
