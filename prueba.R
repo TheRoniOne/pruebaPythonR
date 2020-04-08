@@ -1,26 +1,31 @@
-tiempoInicio <- Sys.time()
+# tiempoInicio <- Sys.time()
 prepararAmbiente <- function(){
   if (!is.element("tidyverse", installed.packages())){
-    print("Yes")
+    install.packages("tidyverse")
   }
   if (!is.element("readxl", installed.packages())){
-    print("Yes")
+    install.packages("readxl")
+  }
+  if (!is.element("jsonlite", installed.packages())){
+    install.packages("jsonlite")
   }
 }
 
 prepararAmbiente()
 
 library("tidyverse")
-library("readxl")
+# library("readxl")
+library("jsonlite")
 
 args = commandArgs(trailingOnly=TRUE)
 # path_loc <- "D:/Datos de Usuario/rgamezv/Downloads/prueba"
 path_loc <- args[1]
 archivoOrigen <- args[2]
-# archivoOrigen <- "telecom.csv"
+# archivoOrigen <- "telecom.json"
 setwd(path_loc)
 
-dataOriginal <- read_csv(archivoOrigen)
+dataOriginal <- fromJSON(archivoOrigen) %>% as_tibble()
+# dataOriginal <- read_csv(archivoOrigen)
 resultado <- slice(dataOriginal, 1)
 
 # path_loc <- "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
@@ -31,3 +36,5 @@ write_excel_csv(resultado, nombreArchivoFinal)
 # tiempoFin <- Sys.time()
 # 
 # print(tiempoFin - tiempoInicio)
+
+# write_json(dataOriginal, "telecom.json")
