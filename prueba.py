@@ -1,6 +1,7 @@
 import sys, subprocess
 from flask import Flask, request, jsonify
 import json
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -19,7 +20,10 @@ def calcularResultado():
     dirResultado = '{}/resultado.json'.format(locResultado)
     with open(dirResultado, "r") as file:
         resultado = json.load(file)
-    return jsonify(resultado)
+        print(resultado)
+    matriz = pd.read_json(dirResultado)
+    print("jsonificado")
+    return jsonify(matriz.to_json(orient= "records"))
 
 if __name__ == "__main__":
     app.run(debug= True)

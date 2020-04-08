@@ -24,15 +24,28 @@ archivoOrigen <- args[2]
 # archivoOrigen <- "telecom.json"
 setwd(path_loc)
 
-dataOriginal <- fromJSON(archivoOrigen) %>% as_tibble()
+df <- fromJSON(archivoOrigen) %>% as_tibble()
 # dataOriginal <- read_csv(archivoOrigen)
-resultado <- slice(dataOriginal, 1)
+# resultado <- slice(dataOriginal, 1)
+df$TotalCharges <- as.numeric(df$TotalCharges)
+#reemplazar los nulos con la media
+df <- df %>% mutate(MonthlyCharges = replace(MonthlyCharges, is.na(MonthlyCharges), median(MonthlyCharges, na.rm= TRUE)))
+
+#reemplazar lo q hayan puesto para decir q es nulo por un nulo real
+df <- df %>% mutate(TotalCharges = replace(TotalCharges, TotalCharges == "na", NA)) %>% mutate(
+  TotalCharges = replace(TotalCharges, TotalCharges == "N/A", NA)) %>% mutate(
+    TotalCharges = replace(TotalCharges, is.na(TotalCharges), median(TotalCharges, na.rm = TRUE)))
+#reemplazar lo q hayan puesto para decir q es nulo por un nulo real
+df <- df %>% mutate(PaymentMethod = replace(PaymentMethod, PaymentMethod == "--", NA)) %>% mutate(
+  PaymentMethod = replace(PaymentMethod, PaymentMethod == "", NA)) %>% mutate(
+    PaymentMethod = replace(PaymentMethod, is.na(PaymentMethod), "No encontrado"))
 
 # path_loc <- "D:/Datos de Usuario/rgamezv/Downloads/resultadoPrueba"
 path_loc <- args[3]
 setwd(path_loc)
 nombreArchivoFinal <- str_glue("resultado.json")
-write_json(resultado, nombreArchivoFinal)
+write_json(df, nombreArchivoFinal)
+# write_json(resultado, nombreArchivoFinal)
 # tiempoFin <- Sys.time()
 # 
 # print(tiempoFin - tiempoInicio)

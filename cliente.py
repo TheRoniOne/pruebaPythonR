@@ -6,6 +6,6 @@ with open("telecom.json", "r") as file:
     miJSON = json.load(file)
 
 resultado = requests.post(url, json=miJSON)
-
+print(resultado.json())
 with open("miResultado.json", "w") as file:
-    json.dump(resultado.json(), file)
+    file.write(resultado.json())
