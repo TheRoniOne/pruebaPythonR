@@ -1,5 +1,8 @@
 import sys, subprocess
 
+locCSV = sys.argv[1]
+nombreCSV = sys.argv[2]
+locResultado = sys.argv[3]
 
 locCSV = "D:/Datos de Usuario/rgamezv/Downloads/prueba"
 nombreCSV = "telecom.csv"
